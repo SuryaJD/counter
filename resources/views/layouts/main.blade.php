@@ -18,9 +18,11 @@
     <link rel="stylesheet" href="assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="assets/vendor/flatpickr/flatpickr.min.css"><!-- END PLUGINS STYLES -->
     <!-- BEGIN THEME STYLES -->
-    <link rel="stylesheet" href="assets/stylesheets/theme.min.css" data-skin="default">
-    <link rel="stylesheet" href="assets/stylesheets/theme-dark.min.css" data-skin="dark">
-    <link rel="stylesheet" href="assets/stylesheets/custom.css">
+    <link href="/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
+    <!--end::Page Vendor Stylesheets-->
+    <!--begin::Global Stylesheets Bundle(used by all pages)-->
+    <link href="/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
     {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet">  --}}
 
     <script>
@@ -35,7 +37,7 @@
     </script><!-- END THEME STYLES -->
     @livewireStyles
   <style>
-  </style>    
+  </style>
   </head>
   <body>
     <!-- .app -->
@@ -48,7 +50,7 @@
       <!-- /.app-header -->
       <!-- .app-main -->
       <main class="app-main pt-0">
-        
+
         <!-- .wrapper -->
         <div class="wrapper">
           <!-- .page -->
@@ -81,16 +83,16 @@
       </main><!-- /.app-main -->
     </div><!-- /.app -->
     <!-- BEGIN BASE JS -->
-    <script src="assets/vendor/jquery/jquery.min.js"></script>
-    <script src="assets/vendor/popper.js/umd/popper.min.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script> <!-- END BASE JS -->
+    <script src="assets-old/vendor/jquery/jquery.min.js"></script>
+    <script src="assets-old/vendor/popper.js/umd/popper.min.js"></script>
+    <script src="assets-old/vendor/bootstrap/js/bootstrap.min.js"></script> <!-- END BASE JS -->
     <!-- BEGIN PLUGINS JS -->
     {{-- <script src="assets/vendor/pace-progress/pace.min.js"></script>
     <script src="assets/vendor/stacked-menu/js/stacked-menu.min.js"></script> --}}
-    <script src="assets/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    <script src="assets/vendor/flatpickr/flatpickr.min.js"></script>
-    <script src="assets/vendor/easy-pie-chart/jquery.easypiechart.min.js"></script>
-    <script src="assets/vendor/jquery-sparkline/jquery.sparkline.min.js"></script>
+    <script src="assets-old/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="assets-old/vendor/flatpickr/flatpickr.min.js"></script>
+    <script src="assets-old/vendor/easy-pie-chart/jquery.easypiechart.min.js"></script>
+    <script src="assets-old/vendor/jquery-sparkline/jquery.sparkline.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     {{-- <script src="assets/vendor/chart.js/Chart.min.js"></script> <!-- END PLUGINS JS --> --}}
     <!-- BEGIN THEME JS -->

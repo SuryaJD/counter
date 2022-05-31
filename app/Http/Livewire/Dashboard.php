@@ -19,7 +19,7 @@ class Dashboard extends Component
     protected $queryString = ['range'];
 
     public function updatedRange($range)
-    {   
+    {
         $this->findRange();
 
         $this->emit('refresh',[

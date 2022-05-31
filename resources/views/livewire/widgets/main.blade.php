@@ -1,5 +1,5 @@
 <div>
-    <div class="section-block">
+    {{-- <div class="section-block">
         <!-- metric row -->
         <div class="metric-row">
             <div class="col-lg-9">
@@ -11,7 +11,7 @@
                             style="padding:0px!important;">
                             <h2 class="metric-label"> Pageviews </h2>
                             <p class="metric-value h1">
-                                <span class="value" id="pageviewsCount">{{$pageviewsCount}}</span>
+                                <span class="value" id="pageviewsCount">{{ $pageviewsCount }}</span>
                             </p>
                         </a> <!-- /.metric -->
                     </div><!-- /metric column -->
@@ -21,8 +21,8 @@
                         <a href="user-projects.html" class="metric metric-bordered align-items-center">
                             <h2 class="metric-label"> Visitors </h2>
                             <p class="metric-value h1">
-                                <sub><i class="oi oi-fork"></i></sub> 
-                                <span class="value" id="uniqueVisitorsCount">{{$visitorsCount}}</span>
+                                <sub><i class="oi oi-fork"></i></sub>
+                                <span class="value" id="uniqueVisitorsCount">{{ $visitorsCount }}</span>
                             </p>
                         </a> <!-- /.metric -->
                     </div><!-- /metric column -->
@@ -52,131 +52,125 @@
             </div><!-- /metric column -->
         </div><!-- /metric row -->
 
-    </div>
-    <div class="card card-body">
-        <div id="main-chart"></div>
+    </div> --}}
+    <div class="card card-xl-stretch mb-5 mb-xl-8">
+        <div id="main-chart" class="mx-5"></div>
     </div><!-- /.card -->
 </div>
 
 
 @push('chart')
-<script>
-    var options = {
-        annotations: {
-            xaxis: [{
-                    x: '12 Jan',
-                    borderColor: '#FEB019',
-                    label: {
+    <script>
+        var options = {
+            annotations: {
+                xaxis: [{
+                        x: '12 Jan',
                         borderColor: '#FEB019',
-                        style: {
-                            background: '#FEB019',
-                            color: '#fff',
-                            fontSize: '12px',
-                            fontWeight: 400,
-                        },
-                        text: 'Facebook Ads Started',
-                        position: 'top',
-                        orientation: 'horizontal',
-                    }
-                },
-                {
-                    x: '24 Feb',
-                    borderColor: '#FF4560',
-                    label: {
+                        label: {
+                            borderColor: '#FEB019',
+                            style: {
+                                background: '#FEB019',
+                                color: '#fff',
+                                fontSize: '12px',
+                                fontWeight: 400,
+                            },
+                            text: 'Facebook Ads Started',
+                            position: 'top',
+                            orientation: 'horizontal',
+                        }
+                    },
+                    {
+                        x: '24 Feb',
                         borderColor: '#FF4560',
-                        style: {
-                            background: '#FF4560',
-                            color: '#fff',
-                            fontSize: '12px',
-                            fontWeight: 400,
-                        },
-                        text: 'Bhai cha bday',
-                        position: 'top',
-                        orientation: 'horizontal',
+                        label: {
+                            borderColor: '#FF4560',
+                            style: {
+                                background: '#FF4560',
+                                color: '#fff',
+                                fontSize: '12px',
+                                fontWeight: 400,
+                            },
+                            text: 'Bhai cha bday',
+                            position: 'top',
+                            orientation: 'horizontal',
+                        }
+                    },
+                    {
+                        x: '19 Jun',
+                        borderColor: '#00E396',
+                        label: {
+                            borderColor: '#00E396',
+                            style: {
+                                background: '#00E396',
+                                color: '#fff',
+                                fontSize: '12px',
+                                fontWeight: 400,
+                            },
+                            text: 'New champign',
+                            position: 'top',
+                            orientation: 'horizontal',
+                        }
                     }
+                ],
+            },
+            series: [{
+                    name: 'Pageviews',
+                    data: @json($pageviewsdata)
                 },
                 {
-                    x: '19 Jun',
-                    borderColor: '#00E396',
-                    label: {
-                        borderColor: '#00E396',
-                        style: {
-                            background: '#00E396',
-                            color: '#fff',
-                            fontSize: '12px',
-                            fontWeight: 400,
-                        },
-                        text: 'New champign',
-                        position: 'top',
-                        orientation: 'horizontal',
-                    }
-                }
+                    name: 'Unique Visitors',
+                    data: @json($visitorsdata)
+                },
             ],
-        },
-        series: [{
-                name: 'Pageviews',
-                data: @json($pageviewsdata)
+            chart: {
+                type: 'area',
+                height: 350,
             },
-            {
-                name: 'Unique Visitors',
-                data: @json($visitorsdata)
-            },
-        ],
-        chart: {
-            type: 'area',
-            height: 350,
-        },
-        colors: [
-            '#008FFB',
-            '#00E396'
-        ],
-        dataLabels: {
-            enabled: false
-        },
-        stroke: {
-            curve: 'smooth',
-            width: 0.8
-        },
-        legend: {
-            position: 'top',
-            horizontalAlign: 'left'
-        },
-        xaxis: {
-            categories: @json($labels),
-            tickAmount: 10,
-            tooltip: {
+            colors: [
+                '#008FFB',
+                '#00E396'
+            ],
+            dataLabels: {
                 enabled: false
-            }
-        },
-    };
+            },
+            stroke: {
+                curve: 'smooth',
+                width: 0.8
+            },
+            legend: {
+                position: 'top',
+                horizontalAlign: 'left'
+            },
+            xaxis: {
+                categories: @json($labels),
+                tickAmount: 10,
+                tooltip: {
+                    enabled: false
+                }
+            },
+        };
 
-    var chart = new ApexCharts(document.querySelector("#main-chart"), options);
-    chart.render();
+        var chart = new ApexCharts(document.querySelector("#main-chart"), options);
+        chart.render();
 
-    document.addEventListener('livewire:load', function () {
-
-
-
-            window.addEventListener('render-chart', event => {  
-                alert('jdnkdj');
-                        chart.updateOptions({
-                            series:[{
-                                    name: 'Pageviews',
-                                    data: event.detail.pageviewsdata
-                                },
-                                {
-                                    name: 'Unique Visitors',
-                                    data: event.detail.visitorsdata
-                                },
-                            ],
-                                xaxis: {
-                                    categories: event.detail.labels,
-                                }
-                            })
+        document.addEventListener('livewire:load', function() {
+            window.addEventListener('render-chart', event => {
+                chart.updateOptions({
+                    series: [{
+                            name: 'Pageviews',
+                            data: event.detail.pageviewsdata
+                        },
+                        {
+                            name: 'Unique Visitors',
+                            data: event.detail.visitorsdata
+                        },
+                    ],
+                    xaxis: {
+                        categories: event.detail.labels,
+                    }
+                })
             })
 
-    })
-
-
-</script>
+        })
+    </script>
 @endpush

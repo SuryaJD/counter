@@ -9,7 +9,7 @@ class Pageview extends Model
 {
     use HasFactory;
 
-    protected $table = "pageviews_new";
+    protected $table = "pageviews";
 
     protected $casts = [
         'utm' => 'array'

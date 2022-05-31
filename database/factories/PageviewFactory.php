@@ -23,7 +23,7 @@ class PageviewFactory extends Factory
     public function definition()
     {
         return [
-            'page_url'         => $this->faker->slug(),
+            'page_url'         => $this->faker->randomElement(['/wordpress/10-plugins-you-can-use-in-ecommerce-website','/laravel/password-validation','/about-us']),
             'Referer'          => $this->faker->domainName,
             'utm'              => [
                 'source'   => $this->faker->randomElement(['facebook','twitter','google']),
@@ -36,10 +36,10 @@ class PageviewFactory extends Factory
             'device'           => $this->faker->randomElement(['iPhone','Nexus','AsusTablet','Moto G']),
             'browser'          => $this->faker->randomElement(['Chrome','IE','Safari','Firefox']),
             'broser_verison'   => $this->faker->randomFloat(2,35,80),
-            'operating_system' => $this->faker->randomElement(['Ubuntu','Red hat','Chromium','Ubuntu','OS X']), 
-            'fresh_visit'      => $this->faker->boolean, 
-            'created_at'       => $this->faker->dateTimeThisYear(Carbon::today()->endOfYear()), 
+            'operating_system' => $this->faker->randomElement(['Ubuntu','Red hat','Chromium','Ubuntu','OS X']),
+            'fresh_visit'      => $this->faker->boolean,
+            'created_at'       => $this->faker->dateTimeThisYear(Carbon::today()->endOfYear()),
         ];
-        
+
     }
 }

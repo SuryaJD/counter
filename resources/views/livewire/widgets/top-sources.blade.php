@@ -20,7 +20,25 @@
         <div class="tab-pane fade active show" id="referer">
             <div class="list-group list-group-flush">
                 @foreach ($referers as $referer)
-                <a href="{{$referer->referer}}" target="_blank" class="list-group-item list-group-item-action">
+                <div class="d-flex align-items-sm-center mb-7">
+                    <!--begin::Symbol-->
+                    <div class="symbol symbol-circle symbol-50px me-5">
+                        <span class="symbol-label">
+                            <img src="https://icons.duckduckgo.com/ip3/{{Spatie\Url\Url::fromString($referer->referer)->getPath()}}.ico" class="h-50 align-self-center" alt="">
+                        </span>
+                    </div>
+                    <!--end::Symbol-->
+                    <!--begin::Section-->
+                    <div class="d-flex align-items-center flex-row-fluid flex-wrap">
+                        <div class="flex-grow-1 me-2">
+                            <a href="#" class="text-gray-800 text-hover-primary fs-6 fw-bolder">Top Authors</a>
+                            <span class="text-muted fw-bold d-block fs-7">{{Spatie\Url\Url::fromString($referer->referer)->getPath()}}</span>
+                        </div>
+                        <span class="badge badge-light fw-bolder my-2">{{ $referer->views }}</span>
+                    </div>
+                    <!--end::Section-->
+                </div>
+                {{-- <a href="{{$referer->referer}}" target="_blank" class="list-group-item list-group-item-action">
                     <div class="list-group-item-figure">
                         <div class="user-avatar">
                             <img src="https://icons.duckduckgo.com/ip3/{{Spatie\Url\Url::fromString($referer->referer)->getPath()}}.ico"
@@ -41,7 +59,7 @@
                             </div>
                         </div>
                     </div>
-                </a>
+                </a> --}}
                 @endforeach
             </div>
         </div>

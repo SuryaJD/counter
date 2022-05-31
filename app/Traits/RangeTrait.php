@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Traits;
 
@@ -7,9 +7,9 @@ use Illuminate\Support\Facades\Cache;
 use phpDocumentor\Reflection\Types\Boolean;
 
 trait RangeTrait {
-    
+
     public string $range = 'this_month';
-    
+
     public Carbon $from;
 
     public Carbon $to;

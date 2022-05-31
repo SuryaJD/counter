@@ -34,6 +34,8 @@ class Main extends Component
 
     protected $listeners = ['refresh' => 'refresh'];
 
+
+    // @todo Add Graph Type from user settings
     public function mount($range,$from,$to,$format,$interval)
     {
 
@@ -62,7 +64,7 @@ class Main extends Component
             'labels' => array_keys($this->pageviews),
 
             'pageviewsdata' => array_values($this->pageviews),
-    
+
             'visitorsdata' => array_values($this->visitors),
         ]);
     }
@@ -88,7 +90,7 @@ class Main extends Component
             ->get()->toArray();
         });
 
-        $period = CarbonPeriod::create($this->from, '1 '.$this->interval, $this->to);   
+        $period = CarbonPeriod::create($this->from, '1 '.$this->interval, $this->to);
 
         $dates = [];
 
@@ -124,7 +126,7 @@ class Main extends Component
             'labels' => array_keys($this->pageviews),
 
             'pageviewsdata' => array_values($this->pageviews),
-    
+
             'visitorsdata' => array_values($this->visitors),
 
             'pageviewsCount' => array_sum($this->pageviews),

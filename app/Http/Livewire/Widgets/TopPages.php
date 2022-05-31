@@ -13,7 +13,7 @@ use Livewire\WithPagination;
 
 class TopPages extends Component
 {
-    use RangeTrait,WithPagination;
+    use RangeTrait, WithPagination;
 
     public $path;
 
@@ -31,17 +31,17 @@ class TopPages extends Component
         $this->findRange();
 
         $query = Pageview::query();
-        $query->select('page_url as name',DB::raw('count(*) as views'))
-        ->whereBetween('created_at',[$this->from,$this->to])
-        ->groupBy('page_url')
-        ->orderBy('views','desc');
+        $query->select('page_url as name', DB::raw('count(*) as views'))
+            ->whereBetween('created_at', [$this->from, $this->to])
+            ->groupBy('page_url')
+            ->orderBy('views', 'desc');
 
         if (isset($this->path)) {
-           $query->where('page_url',$this->path);
+            $query->where('page_url', $this->path);
         }
 
-        return view('livewire.widgets.top-pages',[
-            'topPages' =>$query->paginate(5)
+        return view('livewire.widgets.top-pages', [
+            'topPages' => $query->paginate(5)
         ]);
     }
 }
